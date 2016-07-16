@@ -1,3 +1,6 @@
 # ignore emacs files
 *~
 \#*\#
+
+# ignore Maven targets
+target/
