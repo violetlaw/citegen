@@ -25,7 +25,7 @@ See [Maven installation instructions](https://maven.apache.org/install.html)
 The input to citegen is defined by language/platform-independent
 [protocol buffer messages](https://en.wikipedia.org/wiki/Protocol_Buffers).
 
-[Install the protocol bufer compiler]
+[Install the protocol buffer compiler]
 (https://github.com/google/protobuf#protocol-compiler-installation).
 
 The `protoc` executable must be on your
