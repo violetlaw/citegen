@@ -40,9 +40,10 @@ Adding `protoc` to path.
 This is usually accomplished by adding the following line to your
 `~/.bashrc` file (`~/.bash_profile` for OSX).
 
-`export PATH=$PATH:path/to/protoc`
+`export PATH=$PATH:path/to/protoc_dir`
 
-where `path/to/protoc` is the path to the `protoc` executable.
+where `path/to/protoc_dir` is the path to the directory containing
+`protoc` executable.
 
 You will need to run `source .bashrc` (or `.bash_profile`) after editing
 to pick up the changes.
