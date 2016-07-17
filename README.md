@@ -18,7 +18,9 @@ Maven is used to build citegen.
 
 ##### Other Unixes, OSX
 
-See [Maven installation instructions](https://maven.apache.org/install.html) 
+See [Maven installation instructions](https://maven.apache.org/install.html)
+(or use the appropriate packaging/installation system for your platform
+-- MacPorts, Homebrew, Fink, etc).
 
 #### Install `protoc`
 
