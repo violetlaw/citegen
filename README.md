@@ -52,3 +52,10 @@ run the protocol buffer compiler.
 
 </details>
 
+### Building
+
+After [cloning the project locally]
+(https://help.github.com/articles/fetching-a-remote/#clone),
+run the following command from the root directory of the project:
+
+`mvn package`
