@@ -6,6 +6,9 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import org.junit.Test;
 
+/**
+ * Test that verifies Maven provides files from src/test/resources/
+ */
 public class ResourcesTest {
 
   @Test
