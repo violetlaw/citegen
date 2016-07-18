@@ -2,5 +2,14 @@
 *~
 \#*\#
 
+# ignore temp files
+.\#*
+
+# ignore java/eclipse files
+
+.classpath
+.project
+.settings/
+
 # ignore Maven targets
 target/
