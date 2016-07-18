@@ -1,7 +1,5 @@
 package com.github.violetlaw.citegen;
 
-public interface FormattedTextRenderer {
-	
-	render(int render);
-
+public interface HtmlTextRenderer {
+    String render(int render);
 }
