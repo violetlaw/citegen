@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option java_package = "com.github.violetlaw.citegen";
+
+message TextContainer {
+	repeated TextElement elements = 1;
+}
+
+message TextElement {
+	string data = 1;
+} 
