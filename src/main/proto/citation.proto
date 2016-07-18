@@ -1,7 +1,9 @@
+syntax = "proto3";
+
 package citegen;
 
 option java_package = "com.github.violetlaw.citegen";
 
 message CitationRequest {
-  optional string title = 1;
+  string title = 1;
 }
