@@ -1,3 +1,5 @@
+package com.github.violetlaw.citegen;
+
 import static org.junit.Assert.assertEquals;
 
 import com.google.common.io.Resources;
