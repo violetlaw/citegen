@@ -1,5 +1,5 @@
 package com.github.violetlaw.citegen;
 
 public interface HtmlTextRenderer {
-    String render(int render);
+  String render(int render);
 }
