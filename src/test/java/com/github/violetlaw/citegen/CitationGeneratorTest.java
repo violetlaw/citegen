@@ -37,6 +37,7 @@ public class CitationGeneratorTest {
   private static Path OUTPUT = GOLDEN_TESTS.resolve("output");
 
   @Parameters
+  // TODO(nnaze): Also paramaterize the test name.
   public static Iterable<GoldenTestData> data() throws IOException {
     return getTestCases();
   }
