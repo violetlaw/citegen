@@ -12,9 +12,13 @@ import java.util.List;
 
 import com.google.auto.value.AutoValue;
 import com.google.common.collect.Lists;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
+@RunWith(Parameterized.class)
 public class CitationGeneratorTest {
 
   // TODO(nnaze): Implement parameterized tests at this point.
@@ -24,10 +28,19 @@ public class CitationGeneratorTest {
   private static Path INPUT = GOLDEN_TESTS.resolve("input");
   private static Path OUTPUT = GOLDEN_TESTS.resolve("output");
 
- @Parameters
+  @Parameters
   public static Iterable<GoldenTestData> data() throws IOException {
     return getTestCases();
   }
+
+  final private GoldenTestData data;
+
+  public CitationGeneratorTest(GoldenTestData data) {
+    this.data = data;
+  }
+
+  @Test
+  public void testGoldenTestData() {}
 
   @AutoValue
   public static abstract class GoldenTestData {
