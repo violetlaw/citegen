@@ -36,8 +36,7 @@ public class CitationGeneratorTest {
   private static Path INPUT = GOLDEN_TESTS.resolve("input");
   private static Path OUTPUT = GOLDEN_TESTS.resolve("output");
 
-  @Parameters
-  // TODO(nnaze): Also paramaterize the test name.
+  @Parameters(name = "{0}")
   public static Iterable<GoldenTestData> data() throws IOException {
     return getTestCases();
   }
@@ -50,15 +49,15 @@ public class CitationGeneratorTest {
 
   @Test
   public void testGoldenTestData() throws IOException {
-  	verifyInputOutput(data.input(), data.output());
+    verifyInputOutput(data.input(), data.output());
   }
 
   private void verifyInputOutput(CitationRequest request, TextContainer outputText) {
-		// TODO(nnaze): Implement input/output test here.
+    // TODO(nnaze): Implement input/output test here.
 
-	}
+  }
 
-	@AutoValue
+  @AutoValue
   public static abstract class GoldenTestData {
     static GoldenTestData create(Path inputPath, Path outputPath) {
       return new AutoValue_CitationGeneratorTest_GoldenTestData(inputPath, outputPath);
@@ -67,19 +66,24 @@ public class CitationGeneratorTest {
     abstract Path inputPath();
 
     abstract Path outputPath();
-    
+
     CitationRequest input() throws IOException {
-    	Parser parser = JsonFormat.parser();
-    	CitationRequest.Builder builder = CitationRequest.newBuilder();
-    	parser.merge(new FileReader(inputPath().toFile()), builder);
-    	return builder.build();
+      Parser parser = JsonFormat.parser();
+      CitationRequest.Builder builder = CitationRequest.newBuilder();
+      parser.merge(new FileReader(inputPath().toFile()), builder);
+      return builder.build();
     }
-    
+
     TextContainer output() throws IOException {
-    	Parser parser = JsonFormat.parser();
-    	TextContainer.Builder builder = TextContainer.newBuilder();
-    	parser.merge(new FileReader(outputPath().toFile()), builder);
-    	return builder.build();
+      Parser parser = JsonFormat.parser();
+      TextContainer.Builder builder = TextContainer.newBuilder();
+      parser.merge(new FileReader(outputPath().toFile()), builder);
+      return builder.build();
+    }
+
+    @Override
+    public String toString() {
+      return String.format("%s input: %s output: %s", super.toString(), inputPath(), outputPath());
     }
   }
 
