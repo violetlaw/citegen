@@ -6,4 +6,16 @@ option java_package = "com.github.violetlaw.citegen";
 
 message CitationRequest {
   string title = 1;
+
+  repeated string authors = 2;
+
+  string journal_title = 3;
+
+  string volume = 4;
+
+  string date = 5;
+
+  string starting_page = 6;
+
+  string pincite = 7;
 }
