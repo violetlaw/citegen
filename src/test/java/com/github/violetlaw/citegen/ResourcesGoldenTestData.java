@@ -10,7 +10,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 import com.github.violetlaw.citegen.Citation.CitationRequest;
-import com.github.violetlaw.citegen.TextOutput.TextContainer;
+import com.github.violetlaw.citegen.Text.TextContainer;
 import com.google.auto.value.AutoValue;
 import com.google.common.collect.Lists;
 import com.google.protobuf.util.JsonFormat;

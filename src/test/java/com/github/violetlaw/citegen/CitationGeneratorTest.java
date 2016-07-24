@@ -4,7 +4,7 @@ import static com.google.common.truth.Truth.assertThat;
 
 import java.io.IOException;
 import com.github.violetlaw.citegen.Citation.CitationRequest;
-import com.github.violetlaw.citegen.TextOutput.TextContainer;
+import com.github.violetlaw.citegen.Text.TextContainer;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
