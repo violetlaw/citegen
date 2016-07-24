@@ -5,7 +5,7 @@ import com.github.violetlaw.citegen.TextOutput.TextContainer;
 
 public interface GoldenTestData {
 
-	CitationRequest input();
-	
-	TextContainer output();
+  CitationRequest input();
+
+  TextContainer output();
 }

@@ -17,71 +17,71 @@ import com.google.protobuf.util.JsonFormat;
 
 public class ResourcesGoldenTestData {
 
-	// TODO(nnaze): Implement parameterized tests at this point.
+  // TODO(nnaze): Implement parameterized tests at this point.
 
-	private static Path GOLDEN_TESTS = Paths.get("src/test/resources/goldentests");
+  private static Path GOLDEN_TESTS = Paths.get("src/test/resources/goldentests");
 
-	private static Path INPUT = GOLDEN_TESTS.resolve("input");
-	private static Path OUTPUT = GOLDEN_TESTS.resolve("output");
+  private static Path INPUT = GOLDEN_TESTS.resolve("input");
+  private static Path OUTPUT = GOLDEN_TESTS.resolve("output");
 
-	public static Iterable<GoldenTestData> getGoldenTestData() {
-		try {
-			return getGoldenTestDataFromResources();
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
-	}
-	
-	private static Iterable<GoldenTestData> getGoldenTestDataFromResources () throws IOException {
-		List<GoldenTestData> testCases = Lists.newLinkedList();
-		DirectoryStream<Path> 			inputPaths = Files.newDirectoryStream(INPUT, "*.json");
+  public static Iterable<GoldenTestData> getGoldenTestData() {
+    try {
+      return getGoldenTestDataFromResources();
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
 
-		for (Path inputPath : inputPaths) {
-			Path outputPath = OUTPUT.resolve(inputPath.getFileName());
-			
-			testCases.add(InternalGoldenTestData.create(inputPath, outputPath));
-		}
-			
-		return testCases;
-	}
+  private static Iterable<GoldenTestData> getGoldenTestDataFromResources() throws IOException {
+    List<GoldenTestData> testCases = Lists.newLinkedList();
+    DirectoryStream<Path> inputPaths = Files.newDirectoryStream(INPUT, "*.json");
 
-	@AutoValue
-	static abstract class InternalGoldenTestData implements GoldenTestData {
-		static InternalGoldenTestData create(Path inputPath, Path outputPath) {
-			return new AutoValue_ResourcesGoldenTestData_InternalGoldenTestData(inputPath, outputPath);
-		}
+    for (Path inputPath : inputPaths) {
+      Path outputPath = OUTPUT.resolve(inputPath.getFileName());
 
-		abstract Path inputPath();
+      testCases.add(InternalGoldenTestData.create(inputPath, outputPath));
+    }
 
-		abstract Path outputPath();
+    return testCases;
+  }
 
-		@Override
-		public CitationRequest input() {
-			JsonFormat.Parser parser = JsonFormat.parser();
-			CitationRequest.Builder builder = CitationRequest.newBuilder();
-			try {
-				parser.merge(new FileReader(inputPath().toFile()), builder);
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
-			return builder.build();
-		}
+  @AutoValue
+  static abstract class InternalGoldenTestData implements GoldenTestData {
+    static InternalGoldenTestData create(Path inputPath, Path outputPath) {
+      return new AutoValue_ResourcesGoldenTestData_InternalGoldenTestData(inputPath, outputPath);
+    }
 
-		@Override
-		public TextContainer output() {
-			JsonFormat.Parser parser = JsonFormat.parser();
-			TextContainer.Builder builder = TextContainer.newBuilder();
-			try {
-				parser.merge(new FileReader(outputPath().toFile()), builder);
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
-			return builder.build();
-		}
+    abstract Path inputPath();
 
-		@Override
-		public String toString() {
-			return String.format("%s input: %s output: %s", super.toString(), inputPath(), outputPath());
-		}
-	}
+    abstract Path outputPath();
+
+    @Override
+    public CitationRequest input() {
+      JsonFormat.Parser parser = JsonFormat.parser();
+      CitationRequest.Builder builder = CitationRequest.newBuilder();
+      try {
+        parser.merge(new FileReader(inputPath().toFile()), builder);
+      } catch (IOException e) {
+        throw new RuntimeException(e);
+      }
+      return builder.build();
+    }
+
+    @Override
+    public TextContainer output() {
+      JsonFormat.Parser parser = JsonFormat.parser();
+      TextContainer.Builder builder = TextContainer.newBuilder();
+      try {
+        parser.merge(new FileReader(outputPath().toFile()), builder);
+      } catch (IOException e) {
+        throw new RuntimeException(e);
+      }
+      return builder.build();
+    }
+
+    @Override
+    public String toString() {
+      return String.format("%s input: %s output: %s", super.toString(), inputPath(), outputPath());
+    }
+  }
 }
