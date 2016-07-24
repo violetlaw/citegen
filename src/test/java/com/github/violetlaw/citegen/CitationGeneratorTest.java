@@ -4,7 +4,7 @@ import static com.google.common.truth.Truth.assertThat;
 
 import java.io.IOException;
 import com.github.violetlaw.citegen.Citation.CitationRequest;
-import com.github.violetlaw.citegen.Text.TextContainer;
+import com.github.violetlaw.citegen.Text.TextBlock;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,12 +30,12 @@ public class CitationGeneratorTest {
     verifyInputOutput(data.input(), data.output());
   }
 
-  private void verifyInputOutput(CitationRequest request, TextContainer outputText) {
+  private void verifyInputOutput(CitationRequest request, TextBlock outputText) {
     CitationGenerator citationGenerator = new CitationGenerator();
 
-    TextContainer output = citationGenerator.handleRequest(request);
+    TextBlock output = citationGenerator.handleRequest(request);
 
-    assertThat(output).isInstanceOf(TextContainer.class);
+    assertThat(output).isInstanceOf(TextBlock.class);
 
     // TODO(nnaze): Implement input/output test here.
   }

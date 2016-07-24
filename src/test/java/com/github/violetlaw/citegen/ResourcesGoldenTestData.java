@@ -10,7 +10,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 import com.github.violetlaw.citegen.Citation.CitationRequest;
-import com.github.violetlaw.citegen.Text.TextContainer;
+import com.github.violetlaw.citegen.Text.TextBlock;
 import com.google.auto.value.AutoValue;
 import com.google.common.collect.Lists;
 import com.google.protobuf.util.JsonFormat;
@@ -68,9 +68,9 @@ public class ResourcesGoldenTestData {
     }
 
     @Override
-    public TextContainer output() {
+    public TextBlock output() {
       JsonFormat.Parser parser = JsonFormat.parser();
-      TextContainer.Builder builder = TextContainer.newBuilder();
+      TextBlock.Builder builder = TextBlock.newBuilder();
       try {
         parser.merge(new FileReader(outputPath().toFile()), builder);
       } catch (IOException e) {

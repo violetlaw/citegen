@@ -1,12 +1,12 @@
 package com.github.violetlaw.citegen;
 
 import com.github.violetlaw.citegen.Citation.CitationRequest;
-import com.github.violetlaw.citegen.Text.TextContainer;
+import com.github.violetlaw.citegen.Text.TextBlock;
 
 public class CitationGenerator {
 
-  public TextContainer handleRequest(CitationRequest request) {
+  public TextBlock handleRequest(CitationRequest request) {
     // TODO(nnaze): Implement.
-    return TextContainer.newBuilder().build();
+    return TextBlock.newBuilder().build();
   }
 }
