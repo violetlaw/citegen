@@ -13,3 +13,6 @@
 
 # ignore Maven targets
 target/
+
+# ignore OSX files
+.DS_Store
