@@ -6,6 +6,7 @@ import java.io.Writer;
 
 import org.junit.Test;
 
+import com.github.violetlaw.citegen.Text.Style;
 import com.github.violetlaw.citegen.Text.TextBlock;
 import com.github.violetlaw.citegen.Text.TextBlock.Builder;
 import com.google.common.collect.Lists;
@@ -15,14 +16,16 @@ public class HtmlTextRendererTest {
   @Test
   public void testTextRender() throws IOException {
     TextBlock.Builder builder = TextBlock.newBuilder();
-    builder.addAllChildren(
-        Lists.newArrayList(createTextBlock("a"), createTextBlock("b"), createTextBlock("c")));
+
+    TextBlock blockB = TextBlock.newBuilder().setText("b").addStyle(Style.ITALICS).build();
+
+    builder.addAllChildren(Lists.newArrayList(createTextBlock("a"), blockB, createTextBlock("c")));
 
     TextBlock testTextBlock = builder.build();
 
     String testOutput = renderTextBlock(testTextBlock);
 
-    assertThat(testOutput).isEqualTo("abc");
+    assertThat(testOutput).isEqualTo("a<i>b</i>c");
   }
 
   private static String renderTextBlock(TextBlock testTextBlock) throws IOException {
