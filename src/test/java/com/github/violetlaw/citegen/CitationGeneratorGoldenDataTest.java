@@ -12,7 +12,7 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 @RunWith(Parameterized.class)
-public class CitationGeneratorTest {
+public class CitationGeneratorGoldenDataTest {
 
   @Parameters
   public static Iterable<GoldenTestData> data() throws IOException {
@@ -21,7 +21,7 @@ public class CitationGeneratorTest {
 
   final private GoldenTestData data;
 
-  public CitationGeneratorTest(GoldenTestData data) {
+  public CitationGeneratorGoldenDataTest(GoldenTestData data) {
     this.data = data;
   }
 
