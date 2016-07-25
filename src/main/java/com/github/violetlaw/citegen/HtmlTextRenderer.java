@@ -1,5 +1,16 @@
 package com.github.violetlaw.citegen;
 
-public interface HtmlTextRenderer {
-  String render(int render);
+import java.io.IOException;
+import java.io.Writer;
+
+import com.github.violetlaw.citegen.Text.TextBlock;
+
+public class HtmlTextRenderer {
+
+  public void render(TextBlock textBlock, Writer writer) throws IOException {
+    writer.write(textBlock.getText());
+    for (TextBlock child : textBlock.getChildrenList()) {
+      render(child, writer);
+    }
+  }
 }
