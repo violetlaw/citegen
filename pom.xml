@@ -71,6 +71,12 @@
       <artifactId>truth</artifactId>
       <version>0.28</version>
     </dependency>
-    
+
+    <!-- included for javax.annotation.Nullable -->
+    <dependency>
+      <groupId>com.google.code.findbugs</groupId>
+      <artifactId>jsr305</artifactId>
+      <version>3.0.0</version>
+    </dependency>
   </dependencies>
 </project>
