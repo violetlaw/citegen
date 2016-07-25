@@ -1,5 +1,6 @@
 {
-  "children": [{
-    "text": "Cass R. Sunstein"
-  }]
+  "children": [
+      {"text": "Cass R. Sunstein"},
+      {"text": ", "}
+  ]
 }

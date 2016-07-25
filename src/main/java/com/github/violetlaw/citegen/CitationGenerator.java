@@ -15,11 +15,14 @@ public class CitationGenerator {
   public TextBlock handleRequest(CitationRequest request) {
 
     // TODO(nnaze): Implement.
-    TextBlock.Builder builder = TextBlock.newBuilder();
+	TextBlock.Builder builder = TextBlock.newBuilder();
 
     TextBlock authorsBlock = createAuthorsTextBlock(request.getAuthorsList());
     if (authorsBlock != null) {
       builder.addChildren(authorsBlock);
+      
+      TextBlock commaTextBlock = TextBlock.newBuilder().setText(", ").build();
+      builder.addChildren(commaTextBlock);
     }
 
     return builder.build();
