@@ -1,10 +1,10 @@
 package com.github.violetlaw.citegen;
 
-import static com.google.common.truth.Truth.assertThat;
-
 import java.io.IOException;
 import com.github.violetlaw.citegen.Citation.CitationRequest;
 import com.github.violetlaw.citegen.Text.TextBlock;
+import com.google.protobuf.InvalidProtocolBufferException;
+import com.google.protobuf.util.JsonFormat;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,7 +14,7 @@ import org.junit.runners.Parameterized.Parameters;
 @RunWith(Parameterized.class)
 public class CitationGeneratorGoldenDataTest {
 
-  @Parameters(name="{0}")
+  @Parameters(name = "{0}")
   public static Iterable<GoldenTestData> data() throws IOException {
     return ResourcesGoldenTestData.getGoldenTestData();
   }
@@ -30,13 +30,32 @@ public class CitationGeneratorGoldenDataTest {
     verifyInputOutput(data.input(), data.output());
   }
 
-  private void verifyInputOutput(CitationRequest request, TextBlock outputText) {
+  private void verifyInputOutput(CitationRequest request, TextBlock expectedOutput) {
+
     CitationGenerator citationGenerator = new CitationGenerator();
 
-    TextBlock output = citationGenerator.handleRequest(request);
+    TextBlock actualOutput = citationGenerator.handleRequest(request);
 
-    assertThat(output).isInstanceOf(TextBlock.class);
+    if (!expectedOutput.equals(actualOutput)) {
+      throw new AssertionError(generateErrorMessage(expectedOutput, actualOutput));
+    }
+  }
 
-    // TODO(nnaze): Implement input/output test here.
+  private static String generateErrorMessage(TextBlock expectedOutput, TextBlock actualOutput) {
+    StringBuilder builder = new StringBuilder();
+
+    builder.append("Expected and actual output protos do not match.\n");
+    builder.append("Expected proto:\n" + expectedOutput);
+    builder.append("Actual proto:\n" + expectedOutput);
+
+    // Attempt to display in JSON format.
+    try {
+      String json = JsonFormat.printer().print(actualOutput);
+      builder.append("Actual proto in JSON format:\n" + json);
+    } catch (InvalidProtocolBufferException e) {
+      throw new RuntimeException(e);
+    }
+
+    return builder.toString();
   }
 }
