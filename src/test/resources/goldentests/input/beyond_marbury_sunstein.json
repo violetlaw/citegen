@@ -1,12 +1,13 @@
 /*
 
 Author: Cass R. Sunstein
-Title: The Executive’s Power to Say What the Law Is
+Title: Beyond</i> Marbury<i>: The Executive’s Power to Say What the Law Is
 Journal: Yale Law Journal
 Volume: 115
 Starting Page #: 2580
 Pin Cite: 2584
 Date: 2006
+Parenthetical Explanation:
 
 Output: Cass R. Sunstein, <i>Beyond</i> Marbury<i>: The Executive’s Power to Say What the Law Is</i>, 115 <smallcaps>Yale L.J.</smallcaps> 2580 (2006)
 
@@ -15,7 +16,9 @@ Output: Cass R. Sunstein, <i>Beyond</i> Marbury<i>: The Executive’s Power to S
     "title": "The Executive's Power to Say What the Law Is",
     "authors" : ["Cass R. Sunstein"],
     "journal_title": "Yale L. J.",
+    "volume": "115",
     "starting_page": "2580",
     "pincite": "2584",
-    "date" : "2006"
+    "date" : "2006",
+    "parenthetical_explanation":""
 }

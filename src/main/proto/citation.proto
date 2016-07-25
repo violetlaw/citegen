@@ -18,4 +18,6 @@ message CitationRequest {
   string starting_page = 6;
 
   string pincite = 7;
+
+  string parenthetical_explanation = 8;
 }
