@@ -2,6 +2,7 @@
   "children": [
       {"text": "Cass R. Sunstein"},
       {"text": ", "},
-      {"text": "Beyond Marbury: The Executive's Power to Say What the Law Is"}
+      {"text": "Beyond Marbury: The Executive's Power to Say What the Law Is",
+       "style": ["ITALICS"]}
   ]
 }

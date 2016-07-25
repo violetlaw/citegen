@@ -2,7 +2,12 @@ syntax = "proto3";
 
 option java_package = "com.github.violetlaw.citegen";
 
+enum Style {
+     ITALICS = 0;
+}
+
 message TextBlock {
   string text = 1;
   repeated TextBlock children = 2;
+  repeated Style style = 3;
 } 

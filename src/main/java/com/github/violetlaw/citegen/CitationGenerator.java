@@ -3,6 +3,7 @@ package com.github.violetlaw.citegen;
 import java.util.List;
 
 import com.github.violetlaw.citegen.Citation.CitationRequest;
+import com.github.violetlaw.citegen.Text.Style;
 import com.github.violetlaw.citegen.Text.TextBlock;
 import com.github.violetlaw.citegen.Text.TextBlock.Builder;
 import com.google.common.annotations.VisibleForTesting;
@@ -27,7 +28,7 @@ public class CitationGenerator {
 
     String title = request.getTitle();
     if (title != null) {
-      TextBlock titleBlock = TextBlock.newBuilder().setText(title).build();
+      TextBlock titleBlock = TextBlock.newBuilder().setText(title).addStyle(Style.ITALICS).build();
       builder.addChildren(titleBlock);
     }
 
