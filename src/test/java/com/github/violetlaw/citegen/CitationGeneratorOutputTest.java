@@ -19,6 +19,13 @@ import com.google.protobuf.util.JsonFormat;
 public class CitationGeneratorOutputTest {
 
   @Test
+  public void testMarbury() throws IOException {
+    assertJsonCitationHtmlOutput(
+        getReader("citationjson/beyond_marbury_sunstein.json"),
+        "Cass R. Sunstein, <i>Beyond Marbury: The Executive's Power to Say What the Law Is</i>");
+  }
+
+  @Test
   public void testInsideAgencyWalkerHtmlRendering() throws IOException {
     assertJsonCitationHtmlOutput(
         getReader("citationjson/inside_agency_walker.json"),
