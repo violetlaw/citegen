@@ -32,27 +32,28 @@ public class CitationGenerator {
 
     String titleString = getTitleString(request);
     if (titleString != null) {
-      TextBlock titleBlock = TextBlock.newBuilder().setText(titleString).addStyle(Style.ITALICS).build();
+      TextBlock titleBlock =
+          TextBlock.newBuilder().setText(titleString).addStyle(Style.ITALICS).build();
       builder.addChildren(titleBlock);
     }
 
     return builder.build();
   }
-  
+
   @Nullable
   private static String getTitleString(CitationRequest request) {
     if (request.getTitle() == null) {
       return null;
     }
-    
+
     StringBuilder builder = new StringBuilder();
     builder.append(request.getTitle());
-    
+
     String volume = request.getVolume();
     if (volume != null) {
       builder.append(String.format(", %s", volume));
     }
-    
+
     return builder.toString();
   }
 
