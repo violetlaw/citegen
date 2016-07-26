@@ -8,7 +8,11 @@ import com.github.violetlaw.citegen.Text.TextBlock;
 import com.github.violetlaw.citegen.Text.TextBlock.Builder;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Joiner;
+import com.google.common.base.Preconditions;
+import com.google.common.base.Verify;
 import com.google.common.collect.Iterables;
+
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class CitationGenerator {
@@ -26,13 +30,30 @@ public class CitationGenerator {
       builder.addChildren(commaTextBlock);
     }
 
-    String title = request.getTitle();
-    if (title != null) {
-      TextBlock titleBlock = TextBlock.newBuilder().setText(title).addStyle(Style.ITALICS).build();
+    String titleString = getTitleString(request);
+    if (titleString != null) {
+      TextBlock titleBlock = TextBlock.newBuilder().setText(titleString).addStyle(Style.ITALICS).build();
       builder.addChildren(titleBlock);
     }
 
     return builder.build();
+  }
+  
+  @Nullable
+  private static String getTitleString(CitationRequest request) {
+    if (request.getTitle() == null) {
+      return null;
+    }
+    
+    StringBuilder builder = new StringBuilder();
+    builder.append(request.getTitle());
+    
+    String volume = request.getVolume();
+    if (volume != null) {
+      builder.append(String.format(", %s", volume));
+    }
+    
+    return builder.toString();
   }
 
   @Nullable

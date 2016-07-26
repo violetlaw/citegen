@@ -22,14 +22,14 @@ public class CitationGeneratorOutputTest {
   public void testMarbury() throws IOException {
     assertJsonCitationHtmlOutput(
         getReader("citationjson/beyond_marbury_sunstein.json"),
-        "Cass R. Sunstein, <i>Beyond Marbury: The Executive's Power to Say What the Law Is</i>");
+        "Cass R. Sunstein, <i>Beyond Marbury: The Executive's Power to Say What the Law Is, 115</i>");
   }
 
   @Test
   public void testInsideAgencyWalkerHtmlRendering() throws IOException {
     assertJsonCitationHtmlOutput(
         getReader("citationjson/inside_agency_walker.json"),
-        "Christopher J. Walker, <i>Inside Agency Statutory Interpretation</i>");
+        "Christopher J. Walker, <i>Inside Agency Statutory Interpretation, 67</i>");
   }
 
   @Test
@@ -38,7 +38,7 @@ public class CitationGeneratorOutputTest {
         getReader("citationjson/the_continuum_eskridge_and_baer.json"),
         "William N. Eskridge, Jr. & Lauren E. Baer, <i>The Continuum of "
             + "Deference: Supreme Court Treatment of Agency Statutory "
-            + "Interpretations from Chevron to Hamdan</i>");
+            + "Interpretations from Chevron to Hamdan, 96</i>");
   }
 
   private static void assertJsonCitationHtmlOutput(Reader jsonReader, String expectedHtml)
@@ -47,7 +47,7 @@ public class CitationGeneratorOutputTest {
     CitationGenerator citationGenerator = new CitationGenerator();
     TextBlock output = citationGenerator.handleRequest(request);
     String htmlOutput = renderTextBlockAsHtml(output);
-    assertThat(expectedHtml).isEqualTo(htmlOutput);
+    assertThat(htmlOutput).isEqualTo(expectedHtml);
   }
 
   private static String renderTextBlockAsHtml(TextBlock textBlock) throws IOException {
