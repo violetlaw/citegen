@@ -25,6 +25,15 @@ public class CitationGeneratorOutputTest {
         "Christopher J. Walker, <i>Inside Agency Statutory Interpretation</i>");
   }
 
+  @Test
+  public void testTheContinuumEskridge() throws IOException {
+    assertJsonCitationHtmlOutput(
+        getReader("citationjson/the_continuum_eskridge_and_baer.json"),
+        "William N. Eskridge, Jr. & Lauren E. Baer, <i>The Continuum of "
+            + "Deference: Supreme Court Treatment of Agency Statutory "
+            + "Interpretations from Chevron to Hamdan</i>");
+  }
+
   private static void assertJsonCitationHtmlOutput(Reader jsonReader, String expectedHtml)
       throws IOException {
     CitationRequest request = parseCitationRequestJson(jsonReader);
