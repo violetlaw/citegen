@@ -20,13 +20,18 @@ public class CitationGeneratorOutputTest {
 
   @Test
   public void testInsideAgencyWalkerHtmlRendering() throws IOException {
-    CitationRequest request =
-        parseCitationRequestJson(getReader("citationjson/inside_agency_walker.json"));
+    assertJsonCitationHtmlOutput(
+        getReader("citationjson/inside_agency_walker.json"),
+        "Christopher J. Walker, <i>Inside Agency Statutory Interpretation</i>");
+  }
+
+  private static void assertJsonCitationHtmlOutput(Reader jsonReader, String expectedHtml)
+      throws IOException {
+    CitationRequest request = parseCitationRequestJson(jsonReader);
     CitationGenerator citationGenerator = new CitationGenerator();
     TextBlock output = citationGenerator.handleRequest(request);
     String htmlOutput = renderTextBlockAsHtml(output);
-    String expected = "Christopher J. Walker, <i>Inside Agency Statutory Interpretation</i>";
-    assertThat(expected).isEqualTo(htmlOutput);
+    assertThat(expectedHtml).isEqualTo(htmlOutput);
   }
 
   private static String renderTextBlockAsHtml(TextBlock textBlock) throws IOException {
