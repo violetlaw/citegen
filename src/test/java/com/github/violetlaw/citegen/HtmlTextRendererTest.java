@@ -2,7 +2,6 @@ package com.github.violetlaw.citegen;
 
 import java.io.IOException;
 import java.io.StringWriter;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.experimental.runners.Enclosed;
@@ -48,7 +47,7 @@ public class HtmlTextRendererTest {
   public static class RenderTest {
 
     @Test
-    public void testTextRender() throws IOException {
+    public void testSimpleTextRender() throws IOException {
 
       TextBlock.Builder builder = TextBlock.newBuilder();
 
@@ -62,6 +61,24 @@ public class HtmlTextRendererTest {
       String testOutput = renderTextBlock(testTextBlock);
 
       assertThat(testOutput).isEqualTo("a<i>b</i>c");
+    }
+
+    @Test
+    public void testSmallCapsTextRender() throws IOException {
+      TextBlock.Builder builder = TextBlock.newBuilder();
+
+      TextBlock smallCapsBlock =
+          TextBlock.newBuilder().setText("def").addStyle(Style.SMALLCAPS).build();
+
+      builder.addChildren(createTextBlock("abc"));
+      builder.addChildren(smallCapsBlock);
+      builder.addChildren(createTextBlock("ghi"));
+
+      TextBlock testTextBlock = builder.build();
+
+      String testOutput = renderTextBlock(testTextBlock);
+
+      assertThat(testOutput).isEqualTo("abc<span style=\"font-variant: small-caps\">def</span>ghi");
     }
   }
 

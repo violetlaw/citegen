@@ -4,6 +4,7 @@ option java_package = "com.github.violetlaw.citegen";
 
 enum Style {
      ITALICS = 0;
+     SMALLCAPS = 1;
 }
 
 message TextBlock {

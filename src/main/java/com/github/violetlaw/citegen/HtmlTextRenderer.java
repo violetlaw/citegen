@@ -80,6 +80,8 @@ public class HtmlTextRenderer {
     switch (style.getNumber()) {
       case Style.ITALICS_VALUE:
         return Tag.create("i", ImmutableMap.of());
+      case Style.SMALLCAPS_VALUE:
+        return Tag.create("span", ImmutableMap.of("style", "font-variant: small-caps"));
     }
 
     throw new IllegalArgumentException("No valid tag for " + style);
