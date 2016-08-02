@@ -24,7 +24,7 @@ public class CitationGeneratorOutputTest {
         getReader("citationjson/beyond_marbury_sunstein.json"),
         "Cass R. Sunstein, "
             + "<i>Beyond Marbury: The Executive's Power to Say What the Law Is, 115</i> "
-            + "Yale L. J.");
+            + "Yale L. J. 2584");
   }
 
   @Test
@@ -32,7 +32,7 @@ public class CitationGeneratorOutputTest {
     assertJsonCitationHtmlOutput(
         getReader("citationjson/inside_agency_walker.json"),
         "Christopher J. Walker, <i>Inside Agency Statutory Interpretation, 67</i> "
-            + "Stan. L. Rev.");
+            + "Stan. L. Rev. 1020");
   }
 
   @Test

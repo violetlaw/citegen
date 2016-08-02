@@ -44,6 +44,12 @@ public class CitationGenerator {
     TextBlock publicationBlock = getPublicationBlock(request.getPublication());
     builder.addChildren(publicationBlock);
 
+    String pinCite = request.getPincite();
+    if (!pinCite.isEmpty()) {
+      builder.addChildren(getText(" "));
+      builder.addChildren(getText(pinCite));
+    }
+
     return builder.build();
   }
 
@@ -102,5 +108,9 @@ public class CitationGenerator {
     }
 
     return null;
+  }
+
+  private static TextBlock getText(String text) {
+    return TextBlock.newBuilder().setText(text).build();
   }
 }
