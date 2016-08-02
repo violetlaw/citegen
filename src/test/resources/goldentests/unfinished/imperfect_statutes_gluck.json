@@ -14,7 +14,7 @@ Output: Abbe R. Gluck, <i>Imperfect Statutes, Imperfect Courts: Understanding Co
 {
     "title": "Imperfect Statutes, Imperfect Courts: Understanding Congress's Plan in an Era of Unorthodox Lawmaking",
     "authors" : ["Abbe R. Gluck"],
-    "publication_title": "Harv. L. Rev.",
+    "publication": {"title": "Harv. L. Rev."},
     "volume": "129",
     "starting_page": "62",
     "date": "2015"

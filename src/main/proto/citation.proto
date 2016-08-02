@@ -9,7 +9,7 @@ message CitationRequest {
 
   repeated string authors = 2;
 
-  string publication_title = 3;
+  Publication publication = 3;
 
   string volume = 4;
 
@@ -18,4 +18,8 @@ message CitationRequest {
   string starting_page = 6;
 
   string pincite = 7;
+}
+
+message Publication {
+  string title = 1;
 }
