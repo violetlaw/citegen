@@ -9,7 +9,7 @@ message CitationRequest {
 
   repeated string authors = 2;
 
-  string journal_title = 3;
+  string publication_title = 3;
 
   string volume = 4;
 
