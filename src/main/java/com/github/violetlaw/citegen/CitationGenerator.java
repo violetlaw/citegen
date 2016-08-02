@@ -3,6 +3,7 @@ package com.github.violetlaw.citegen;
 import java.util.List;
 
 import com.github.violetlaw.citegen.Citation.CitationRequest;
+import com.github.violetlaw.citegen.Citation.Publication;
 import com.github.violetlaw.citegen.Text.Style;
 import com.github.violetlaw.citegen.Text.TextBlock;
 import com.github.violetlaw.citegen.Text.TextBlock.Builder;
@@ -37,7 +38,18 @@ public class CitationGenerator {
       builder.addChildren(titleBlock);
     }
 
+    // Separating space
+    builder.addChildren(TextBlock.newBuilder().setText(" ").build());
+
+    TextBlock publicationBlock = getPublicationBlock(request.getPublication());
+    builder.addChildren(publicationBlock);
+
     return builder.build();
+  }
+
+  private static TextBlock getPublicationBlock(Publication publication) {
+    // TODO(nanaze): Rendering can differ based
+    return TextBlock.newBuilder().setText(publication.getTitle()).build();
   }
 
   @Nullable
